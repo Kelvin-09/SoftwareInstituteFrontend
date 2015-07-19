@@ -118,7 +118,7 @@ module.exports = function (grunt) {
           dest: '<%= config.temp %>/scripts/jquery.js',
           src: 'bower_components/jquery/dist/jquery.js'
         }, {
-          dest: '<%= config.temp %>/script/react.js',
+          dest: '<%= config.temp %>/scripts/react.js',
           src: 'bower_components/react/react.js'
         }/*, {
           cwd: '',
@@ -154,7 +154,7 @@ module.exports = function (grunt) {
           dest: '<%= config.dist %>/scripts/jquery.js',
           src: 'bower_components/jquery/dist/jquery.min.js'
         }, {
-          dest: '<%= config.dist %>/script/react.js',
+          dest: '<%= config.dist %>/scripts/react.js',
           src: 'bower_components/react/react.min.js'
         }/*, {
           cwd: '',
