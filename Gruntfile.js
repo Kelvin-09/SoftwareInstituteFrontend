@@ -259,11 +259,23 @@ module.exports = function (grunt) {
         }]
       }
     },
+    react: {
+      server: {
+        files: [{
+          expand: true,
+          cwd: '<%= config.app %>/scripts',
+          src: ['{,*/}*.jsx'],
+          dest: '<%= config.temp %>/scripts',
+          ext: '.js'
+        }]
+      }
+    },
     // 多线程任务
     concurrent: {
       server: [
         'sass:server',
-        'copy:server'
+        'copy:server',
+        'react:server'
       ],
       dist: [
         'sass:dist',
