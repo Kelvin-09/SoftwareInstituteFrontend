@@ -130,6 +130,9 @@ module.exports = function (grunt) {
         }, {
           dest: '<%= config.temp %>/scripts/lib/require.js',
           src: 'bower_components/requirejs/require.js'
+        }, {
+          dest: '<%= config.temp %>/scripts/lib/ReactRouter.js',
+          src: 'bower_components/react-router/build/umd/ReactRouter.js'
         }/*, {
           cwd: '',
           dest: '<%= config.temp %>/scripts/bootstrap.js',
@@ -169,6 +172,9 @@ module.exports = function (grunt) {
         }, {
           dest: '<%= config.dist %>/scripts/lib/require.js',
           src: 'bower_components/requirejs/require.js'
+        }, {
+          dest: '<%= config.dist %>/scripts/lib/ReactRouter.js',
+          src: 'bower_components/react-router/build/umd/ReactRouter.min.js'
         }/*, {
           cwd: '',
           dest: '<%= config.dist %>/scripts/bootstrap.js',
