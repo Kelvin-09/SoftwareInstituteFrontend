@@ -2,7 +2,7 @@ define(['react'], function (React) {
     var Navigation = React.createClass({
         render: function () {
             return (
-                <div>Navigation bar</div>
+                <div>Navigation</div>
             );
         }
     });
@@ -15,8 +15,27 @@ define(['react'], function (React) {
         }
     });
 
+    var ShortcutItem = React.createClass({
+        render: function () {
+            return (
+                <li><a href="#">1</a></li>
+            );
+        }
+    });
+
+    var Shortcut = React.createClass({
+        render: function () {
+            return (
+                <ul>
+                    <ShortcutItem />
+                </ul>
+            );
+        }
+    });
+
     return {
         Navigation: Navigation,
-        Footer: Footer
+        Footer: Footer,
+        Shortcut: Shortcut
     };
 });
