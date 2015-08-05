@@ -1,7 +1,4 @@
-define(['react', 'view/public'], function (React, templatePublic) {
-    var Navigation = templatePublic.Navigation,
-        Footer = templatePublic.Footer;
-
+define(['react'], function (React) {
     var Scroll = React.createClass({
         render: function () {
             return (
@@ -38,12 +35,10 @@ define(['react', 'view/public'], function (React, templatePublic) {
         render: function () {
             return (
                 <div>
-                    <Navigation />
                     <Scroll />
                     <Notice />
                     <News />
                     <Resource />
-                    <Footer />
                 </div>
             );
         }

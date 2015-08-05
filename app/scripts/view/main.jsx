@@ -14,4 +14,6 @@ define(['react', 'ReactRouter', 'view/public'], function (React, Router, templat
             );
         }
     });
+
+    return Main;
 });

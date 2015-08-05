@@ -1,4 +1,4 @@
-define(['React'], function (React) {
+define(['react'], function (React) {
     var CommentList = React.createClass({
         render: function () {
             return (

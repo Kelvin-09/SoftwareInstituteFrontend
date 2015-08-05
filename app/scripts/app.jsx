@@ -10,6 +10,8 @@ requirejs.config({
     }
 });
 
-requirejs(['jquery', 'react', 'ReactRouter', 'module/index'], function (jquery, React, Router, index) {
-    //index(jquery('#content')[0]);
+requirejs(['react', 'ReactRouter', 'jquery', '../web_router'], function (React, Router, jquery, routes) {
+    Router.run(routes, Router.HashLocation, function (Handler) {
+        React.render(<Handler />, jquery('#content')[0]);
+    });
 });

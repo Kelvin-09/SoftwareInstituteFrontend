@@ -1,10 +1,14 @@
 /**
  * Created by kelvinsun on 2015/8/5.
  */
-define(['ReactRouter'], function (Router) {
-    var Route = Router.Route;
+define(['react', 'ReactRouter', 'view/main', 'view/index'], function (React, Router, main, index) {
+    var Route = Router.Route,
+        DefaultRoute = Router.DefaultRoute;
     var routes = (
-        <Route name="index" path="/" handler={App}>
+        <Route name="main" path="/" handler={main}>
+            <Route name="index" path="index" handler={index}/>
+            <DefaultRoute handler={index}/>
         </Route>
     );
+    return routes;
 });
