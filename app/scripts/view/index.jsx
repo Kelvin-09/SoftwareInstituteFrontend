@@ -1,6 +1,6 @@
-define(['react', 'view/public'], function (React, publicTemplate) {
-    var Navigation = publicTemplate.Navigation,
-        Footer = publicTemplate.Footer;
+define(['react', 'view/public'], function (React, templatePublic) {
+    var Navigation = templatePublic.Navigation,
+        Footer = templatePublic.Footer;
 
     var Scroll = React.createClass({
         render: function () {
