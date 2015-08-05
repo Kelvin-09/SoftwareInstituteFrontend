@@ -30,6 +30,13 @@ module.exports = function (grunt) {
           livereload: true
         }
       },
+      react: {
+        files: ['<%= config.app %>/scripts/{,*/}*.jsx'],
+        tasks: ['react:server'],
+        options: {
+          livereload: true
+        }
+      },
       sass: {
         files: ['<%= config.app %>/styles/{,*/}*.{sass,scss}'],
         tasks: ['sass:server', 'autoprefixer']
@@ -115,11 +122,14 @@ module.exports = function (grunt) {
           dest: '<%= config.temp %>/fonts',
           src: '{,*/}*'
         }, {
-          dest: '<%= config.temp %>/scripts/jquery.js',
+          dest: '<%= config.temp %>/scripts/lib/jquery.js',
           src: 'bower_components/jquery/dist/jquery.js'
         }, {
-          dest: '<%= config.temp %>/scripts/react.js',
+          dest: '<%= config.temp %>/scripts/lib/react.js',
           src: 'bower_components/react/react.js'
+        }, {
+          dest: '<%= config.temp %>/scripts/lib/require.js',
+          src: 'bower_components/requirejs/require.js'
         }/*, {
           cwd: '',
           dest: '<%= config.temp %>/scripts/bootstrap.js',
@@ -151,11 +161,14 @@ module.exports = function (grunt) {
           src: '{,*/}*',
           dest: '<%= config.dist %>/fonts'
         }, {
-          dest: '<%= config.dist %>/scripts/jquery.js',
+          dest: '<%= config.dist %>/scripts/lib/jquery.js',
           src: 'bower_components/jquery/dist/jquery.min.js'
         }, {
-          dest: '<%= config.dist %>/scripts/react.js',
+          dest: '<%= config.dist %>/scripts/lib/react.js',
           src: 'bower_components/react/react.min.js'
+        }, {
+          dest: '<%= config.dist %>/scripts/lib/require.js',
+          src: 'bower_components/requirejs/require.js'
         }/*, {
           cwd: '',
           dest: '<%= config.dist %>/scripts/bootstrap.js',

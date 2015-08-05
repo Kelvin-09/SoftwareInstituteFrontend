@@ -4,21 +4,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>Hello React</title>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>-->
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>-->
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
   </head>
   <body>
     <div id="content"></div>
 
-    <script src="scripts/jquery.js"></script>
-    <script src="scripts/react.js"></script>
-    <script src="scripts/test.js"></script>
-    <script type="text/javascript">
-    React.render(
-      React.createElement(CommentBox, {}),
-      $('#content')[0]
-    );
-    </script>
+    <script data-main="scripts/router.js" src="scripts/lib/require.js"></script>
   </body>
 </html>
