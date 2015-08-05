@@ -2,6 +2,6 @@
 
 TODO:
 
-1. Include require.js
-2. Write a router
-3. Make cache
+- [x] Include require.js
+- [x] Write a router
+- [ ] Make cache
