@@ -9,9 +9,11 @@ define(['react'], function (React) {
     var NewsList = React.createClass({
         render: function () {
             return (
-                <ul>
-                    <NewsItem />
-                </ul>
+                <div>
+                    <ul>
+                        <NewsItem />
+                    </ul>
+                </div>
             );
         }
     });

@@ -1,8 +1,16 @@
-define(['react'], function (React) {
+define(['react', 'ReactRouter'], function (React, Router) {
+    var Link = Router.Link;
+
     var Navigation = React.createClass({
         render: function () {
             return (
-                <div>Navigation</div>
+                <div>
+                    Navigation
+                    <ul>
+                        <li><Link to="news">Dashboard</Link></li>
+                        <li><Link to="resource">Inbox</Link></li>
+                    </ul>
+                </div>
             );
         }
     });
