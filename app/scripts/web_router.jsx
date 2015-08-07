@@ -11,12 +11,18 @@ define(
         <Route name="main" path="/" handler={main}>
             <Route name="index" path="index" handler={index}/>
             <Route name="browse" path="browse" handler={browse}>
-                <Route name="news" path="news/:newsId" handler={news}/>
+                <Route name="news" path="news">
+                    <Route path=":newsId" handler={news}/>
+                    <DefaultRoute handler={error}/>
+                </Route>
                 <Route name="resource" path="resource" handler={resource}/>
-                <Route name="detail" path="detail" handler={detail}/>
-                <DefaultRoute handler={news} params={{ newsId:123 }}/>
+                <Route name="detail" path="detail">
+                    <Route path=":newsId" handler={detail}/>
+                    <DefaultRoute handler={error}/>
+                </Route>
                 <NotFoundRoute handler={error}/>
             </Route>
+            <Route path=":test" handler={news}/>
             <DefaultRoute handler={index}/>
             <NotFoundRoute handler={error}/>
         </Route>
