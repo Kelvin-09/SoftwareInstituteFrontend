@@ -1,4 +1,5 @@
 /**
+            callback()
  * Created by kelvinsun on 2015/8/5.
  */
 define(
@@ -23,6 +24,7 @@ define(
                 <NotFoundRoute handler={error}/>
             </Route>
             <Route path=":test" handler={news}/>
+            <Route path="notFound/:error?" handler={error}/>
             <DefaultRoute handler={index}/>
             <NotFoundRoute handler={error}/>
         </Route>

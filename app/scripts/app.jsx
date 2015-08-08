@@ -4,9 +4,9 @@
 requirejs.config({
     baseUrl: 'scripts/lib',
     paths: {
-        view: '../view',
-        module: '../module',
-        common: '../common'
+        action: '../action',
+        common: '../common',
+        view: '../view'
     }
 });
 

@@ -1,8 +1,41 @@
-define(['react', 'ReactRouter'], function (React, Router) {
+define(['react', 'ReactRouter', 'action/news', 'common/util'], function (React, Router, actionNews, util) {
     var Link = Router.Link;
 
-    var Navigation = React.createClass({
+    var Outline = React.createClass({
+        getInitialState: function () {},
         render: function () {
+            return (
+                <li>
+                    <ul></ul>
+                </li>
+            );
+        }
+    });
+
+    var Navigation = React.createClass({
+        getInitialState: function () {
+            return {
+                outlineCategory: {}
+            };
+        },
+        componentWillMount: function () {
+            actionNews.OutlineCategory(function (err, data) {
+                if (err) {
+                    location.hash = '#notFound/' + err;
+                } else {
+                    this.setState({
+                        outlineCategory: data
+                    });
+                }
+            }.bind(this));
+        },
+        render: function () {
+            var outlines = [], tempOutline = this.state.outlineCategory;
+            for (var i in tempOutline) {
+                if (util.hasOwnProperty.call(tempOutline, i)) {
+
+                }
+            }
             return (
                 <div>
                     Navigation
