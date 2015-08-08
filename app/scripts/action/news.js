@@ -8,8 +8,8 @@ define(['jquery', 'action/config', 'common/network'], function ($, config, netwo
         path: config.path
     });
 
-    function OutlineCategory (callback) {
-        var url = server + '/OutlineCategory';
+    function NavigatorCategory (callback) {
+        var url = server + '/NavigatorCategory';
         $.ajax({
             'url': url,
             'type': 'GET',
@@ -22,6 +22,6 @@ define(['jquery', 'action/config', 'common/network'], function ($, config, netwo
     }
 
     return {
-        OutlineCategory: OutlineCategory
+        NavigatorCategory: NavigatorCategory
     };
 });

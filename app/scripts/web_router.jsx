@@ -13,7 +13,7 @@ define(
             <Route name="index" path="index" handler={index}/>
             <Route name="browse" path="browse" handler={browse}>
                 <Route name="news" path="news">
-                    <Route path=":newsId" handler={news}/>
+                    <Route name="newsList" path=":newsId" handler={news}/>
                     <DefaultRoute handler={error}/>
                 </Route>
                 <Route name="resource" path="resource" handler={resource}/>

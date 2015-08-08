@@ -1,53 +1,77 @@
 define(['react', 'ReactRouter', 'action/news', 'common/util'], function (React, Router, actionNews, util) {
     var Link = Router.Link;
 
-    var Outline = React.createClass({
-        getInitialState: function () {},
+    // 导航栏的单个选项列表
+    var NavigatorCategory = React.createClass({
+        getInitialState: function () {
+            return {
+                title: this.props.title,
+                category: this.props.category
+            };
+        },
+        componentWillReceiveProps: function (nextProps) {
+            this.setState({
+                title: nextProps.title,
+                category: nextProps.category
+            });
+        },
         render: function () {
+            var category = [], tempCategory = this.state.category;
+            for (var i in tempCategory) {
+                category.push(
+                    <li>
+                        <Link to="newsList" params={{ newsId: i }} query={{ pageSize: 20, pageRequest: 1 }}>{tempCategory[i]}</Link>
+                    </li>
+                );
+            }
             return (
                 <li>
-                    <ul></ul>
+                    <ul>
+                        {this.state.title}
+                        {category}
+                    </ul>
                 </li>
             );
         }
     });
 
+    // 导航栏
     var Navigation = React.createClass({
         getInitialState: function () {
             return {
-                outlineCategory: {}
+                navigatorCategory: {}
             };
         },
         componentWillMount: function () {
-            actionNews.OutlineCategory(function (err, data) {
+            actionNews.NavigatorCategory(function (err, data) {
                 if (err) {
                     location.hash = '#notFound/' + err;
                 } else {
                     this.setState({
-                        outlineCategory: data
+                        navigatorCategory: data
                     });
                 }
             }.bind(this));
         },
         render: function () {
-            var outlines = [], tempOutline = this.state.outlineCategory;
-            for (var i in tempOutline) {
-                if (util.hasOwnProperty.call(tempOutline, i)) {
-
+            var navigatorCategory = [], tempCategory = this.state.navigatorCategory;
+            for (var i in tempCategory) {
+                if (util.hasOwnProperty(tempCategory, i)) {
+                    navigatorCategory.push(<NavigatorCategory title={i} category={tempCategory[i]}/>);
                 }
             }
             return (
                 <div>
                     Navigation
                     <ul>
-                        <li><Link to="news">Dashboard</Link></li>
-                        <li><Link to="resource">Inbox</Link></li>
+                        {navigatorCategory}
                     </ul>
                 </div>
             );
         }
     });
 
+    // 页脚
     var Footer = React.createClass({
         render: function () {
             return (
@@ -56,6 +80,7 @@ define(['react', 'ReactRouter', 'action/news', 'common/util'], function (React, 
         }
     });
 
+    // 快捷入口单项
     var ShortcutItem = React.createClass({
         render: function () {
             return (
@@ -64,6 +89,7 @@ define(['react', 'ReactRouter', 'action/news', 'common/util'], function (React, 
         }
     });
 
+    // 每个页面里面左边的快捷入口
     var Shortcut = React.createClass({
         render: function () {
             return (
