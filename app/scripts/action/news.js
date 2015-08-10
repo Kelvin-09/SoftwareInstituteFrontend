@@ -20,7 +20,7 @@ define(['jquery', 'root/config', 'common/network'], function ($, config, network
         }).success(function (data, status, xhr) {
             callback(null, data);
         }).error(function (xhr, status, error) {
-            callback(error);
+            network.errorToContent(callback, xhr.status, error);
         });
     }
 
@@ -29,11 +29,9 @@ define(['jquery', 'root/config', 'common/network'], function ($, config, network
             return;
         }
         var data, url = server + ('outline' === newsType ? '/NewsListOutline' : '/NewsListCategory');
-        pageSize = pageSize || config.pageSize;
-        pageRequest = pageRequest || config.pageRequest;
         data = {
-            pageSize : pageSize,
-            pageRequest: pageRequest
+            pageSize : pageSize || config.pageSize,
+            pageRequest: pageRequest || config.pageRequest
         };
         data['outline' === newsType ? 'outlineId' : 'categoryId'] = id;
         $.ajax({
@@ -44,7 +42,7 @@ define(['jquery', 'root/config', 'common/network'], function ($, config, network
         }).success(function (data, status, xhr) {
             callback(null, data);
         }).error(function (xhr, status, error) {
-            callback(error);
+            network.errorToContent(callback, xhr.status, error);
         });
     }
 
@@ -63,7 +61,7 @@ define(['jquery', 'root/config', 'common/network'], function ($, config, network
         }).success(function (data, status, xhr) {
             callback(null, data);
         }).error(function (xhr, status, error) {
-            callback(error);
+            network.errorToContent(callback, xhr.status, error);
         });
     }
 

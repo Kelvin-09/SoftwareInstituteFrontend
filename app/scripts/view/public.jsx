@@ -96,6 +96,7 @@ define(['react', 'ReactRouter', 'action/news', 'common/util'], function (React, 
             return (
                 <ul>
                     <ShortcutItem />
+                    <li><Link to="resource" query={{ pageSize: 20, pageRequest: 1 }}>资源下载</Link></li>
                 </ul>
             );
         }

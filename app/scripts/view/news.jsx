@@ -32,16 +32,18 @@ define(['react', 'ReactRouter', 'view/public', 'action/news'], function (React, 
                 id : this.props.query.id,
                 pageSize : this.props.query.pageSize,
                 pageRequest : this.props.query.pageRequest,
-                newsList: []
+                newsList: [],
+                newsCount: 0
             };
         },
-        componentWillReceiveProps: function () {
+        componentWillReceiveProps: function (nextProps) {
             this.setState({
-                newsType: this.props.params.newsType,
-                id : this.props.query.id,
-                pageSize : this.props.query.pageSize,
-                pageRequest : this.props.query.pageRequest,
-                newsList: []
+                newsType: nextProps.params.newsType,
+                id : nextProps.query.id,
+                pageSize : nextProps.query.pageSize,
+                pageRequest : nextProps.query.pageRequest,
+                newsList: [],
+                newsCount: 0
             });
         },
         componentWillMount: function () {

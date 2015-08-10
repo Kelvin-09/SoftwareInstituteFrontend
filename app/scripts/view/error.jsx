@@ -11,6 +11,7 @@ define(['react'], function (React) {
             });
         },
         render: function () {
+            console.log(this.state.error);
             return (
                 <div>
                     <h1>Error</h1>

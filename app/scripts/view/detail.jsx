@@ -1,10 +1,12 @@
 define(['react', 'view/public', 'action/news'], function (React, templatePublic, actionNews) {
     var TitleLine = templatePublic.TitleLine,
         Shortcut = templatePublic.Shortcut;
+
+    // 新闻详情控件
     var Detail = React.createClass({
         getInitialState: function () {
             return {
-                newsId: this.props.params.newsId,
+                id: this.props.params.newsId,
                 title: '',
                 supervisorName: '',
                 article: '',
@@ -14,7 +16,7 @@ define(['react', 'view/public', 'action/news'], function (React, templatePublic,
         },
         componentWillReceiveProps: function (nextProps) {
             this.setState({
-                newsId: nextProps.newsId,
+                id: nextProps.id,
                 title: nextProps.title,
                 supervisorName: nextProps.supervisorName,
                 article: nextProps.article,
@@ -23,7 +25,7 @@ define(['react', 'view/public', 'action/news'], function (React, templatePublic,
             });
         },
         componentWillMount: function () {
-            if (!this.state.newsId) {
+            if (!this.state.id) {
                 location.hash = '#notFound/请输入正确的新闻 ID！';
                 return ;
             }
@@ -39,7 +41,7 @@ define(['react', 'view/public', 'action/news'], function (React, templatePublic,
                     updateTime: data.update_time,
                     pageView: data.page_view
                 });
-            }.bind(this), this.state.newsId);
+            }.bind(this), this.state.id);
         },
         render: function () {
             return (
