@@ -20,7 +20,7 @@ define(['react', 'ReactRouter', 'action/news', 'common/util'], function (React, 
             for (var i in tempCategory) {
                 category.push(
                     <li>
-                        <Link to="newsList" params={{ newsId: i }} query={{ pageSize: 20, pageRequest: 1 }}>{tempCategory[i]}</Link>
+                        <Link to="newsList" params={{ newsType: 'category' }} query={{ newsId: i, pageSize: 20, pageRequest: 1 }}>{tempCategory[i]}</Link>
                     </li>
                 );
             }

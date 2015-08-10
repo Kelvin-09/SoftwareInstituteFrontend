@@ -11,9 +11,9 @@ define(
     var routes = (
         <Route name="main" path="/" handler={main}>
             <Route name="index" path="index" handler={index}/>
-            <Route name="browse" path="browse" handler={browse}>
+            <Route name="browse" path="browse">
                 <Route name="news" path="news">
-                    <Route name="newsList" path=":newsId" handler={news}/>
+                    <Route name="newsList" path=":newsType" handler={news}/>
                     <DefaultRoute handler={error}/>
                 </Route>
                 <Route name="resource" path="resource" handler={resource}/>
