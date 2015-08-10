@@ -5,6 +5,8 @@ define([], function () {
     return {
         protocol: 'http:',
         host: '127.0.0.1:9000',
-        path: '/data'
+        path: '/data',
+        pageSize: 20,
+        pageRequest: 1
     };
 });

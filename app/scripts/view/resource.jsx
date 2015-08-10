@@ -1,5 +1,6 @@
 define(['react', 'view/public'], function (React, templatePublic) {
-    var TitleLine = templatePublic.TitleLine;
+    var TitleLine = templatePublic.TitleLine,
+        Shortcut = templatePublic.Shortcut;
     var ResourceItem = React.createClass({
         render: function () {
             return (

@@ -6,7 +6,8 @@ requirejs.config({
     paths: {
         action: '../action',
         common: '../common',
-        view: '../view'
+        view: '../view',
+        root: '..'
     }
 });
 

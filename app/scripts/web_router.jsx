@@ -12,13 +12,13 @@ define(
         <Route name="main" path="/" handler={main}>
             <Route name="index" path="index" handler={index}/>
             <Route name="browse" path="browse">
-                <Route name="news" path="news">
-                    <Route name="newsList" path=":newsType" handler={news}/>
+                <Route path="news">
+                    <Route name="news" path=":newsType" handler={news}/>
                     <DefaultRoute handler={error}/>
                 </Route>
                 <Route name="resource" path="resource" handler={resource}/>
-                <Route name="detail" path="detail">
-                    <Route path=":newsId" handler={detail}/>
+                <Route path="detail">
+                    <Route name="detail" path=":newsId" handler={detail}/>
                     <DefaultRoute handler={error}/>
                 </Route>
                 <NotFoundRoute handler={error}/>
