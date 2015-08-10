@@ -1,8 +1,13 @@
-define(['react'], function (React) {
+define(['react', 'view/public'], function (React, templatePublic) {
+    var TitleLine = templatePublic.TitleLine;
     var Detail = React.createClass({
         render: function () {
             return (
-                <article>123</article>
+                <div>
+                    <Shortcut/>
+                    <TitleLine/>
+                    <article>123</article>
+                </div>
             );
         }
     });

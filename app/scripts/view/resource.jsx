@@ -1,4 +1,5 @@
-define(['react'], function (React) {
+define(['react', 'view/public'], function (React, templatePublic) {
+    var TitleLine = templatePublic.TitleLine;
     var ResourceItem = React.createClass({
         render: function () {
             return (
@@ -9,9 +10,13 @@ define(['react'], function (React) {
     var ResourceList = React.createClass({
         render: function () {
             return (
-                <ul>
-                    <ResourceItem />
-                </ul>
+                <div>
+                    <Shortcut/>
+                    <TitleLine/>
+                    <ul>
+                        <ResourceItem />
+                    </ul>
+                </div>
             );
         }
     });

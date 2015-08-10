@@ -100,9 +100,20 @@ define(['react', 'ReactRouter', 'action/news', 'common/util'], function (React, 
         }
     });
 
+    var TitleLine = React.createClass({
+        render: function () {
+            return (
+                <div>
+                    <Header>TitleLine</Header>
+                </div>
+            );
+        }
+    });
+
     return {
         Navigation: Navigation,
         Footer: Footer,
-        Shortcut: Shortcut
+        Shortcut: Shortcut,
+        TitleLine: TitleLine
     };
 });

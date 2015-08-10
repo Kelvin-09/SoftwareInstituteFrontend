@@ -1,4 +1,5 @@
-define(['react'], function (React) {
+define(['react', 'view/public'], function (React, templatePublic) {
+    var TitleLine = templatePublic.TitleLine;
     var NewsItem = React.createClass({
         render: function () {
             return (
@@ -10,8 +11,10 @@ define(['react'], function (React) {
         render: function () {
             return (
                 <div>
+                    <Shortcut/>
+                    <TitleLine/>
                     <ul>
-                        <NewsItem />
+                        <NewsItem/>
                     </ul>
                 </div>
             );
