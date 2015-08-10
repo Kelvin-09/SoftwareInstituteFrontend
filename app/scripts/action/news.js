@@ -48,8 +48,28 @@ define(['jquery', 'root/config', 'common/network'], function ($, config, network
         });
     }
 
+    function NewsDetail (callback, newsId) {
+        if (!newsId) {
+            return ;
+        }
+        var url = server + '/NewsDetail';
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: {
+                id: newsId
+            },
+            dataType: 'json'
+        }).success(function (data, status, xhr) {
+            callback(null, data);
+        }).error(function (xhr, status, error) {
+            callback(error);
+        });
+    }
+
     return {
         NavigatorCategory: NavigatorCategory,
-        NewsList: NewsList
+        NewsList: NewsList,
+        NewsDetail: NewsDetail
     };
 });

@@ -101,12 +101,21 @@ define(['react', 'ReactRouter', 'action/news', 'common/util'], function (React, 
         }
     });
 
+    // 标题栏
     var TitleLine = React.createClass({
+        getInitialState: function () {
+            return {
+                title: ''
+            }
+        },
+        componentWillReceiveProps: function (nextProps) {
+            this.setState({
+                title: nextProps.title
+            });
+        },
         render: function () {
             return (
-                <div>
-                    <header>TitleLine</header>
-                </div>
+                <header>{this.state.title}</header>
             );
         }
     });
