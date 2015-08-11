@@ -289,6 +289,15 @@ module.exports = function (grunt) {
         }]
       }
     },
+    requirejs: {
+      compile: {
+        options: {
+          baseUrl: '<%= config.app %>/scripts/lib',
+          mainConfigFile: '<%= config.app %>/scripts/app.js',
+          out: '<%= config.dist %>/scripts/lib/require.js'
+        }
+      }
+    },
     // 多线程任务
     concurrent: {
       server: [
@@ -329,6 +338,8 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify'
   ]);
+
+  grunt.registerTask('requirejs', ['requirejs:complie']);
 };
 
 // sign 需要为 bower_components 文件夹加更新监听（虽然一般不能改里面的东西）

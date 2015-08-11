@@ -13,6 +13,6 @@ requirejs.config({
 
 requirejs(['react', 'ReactRouter', 'jquery', '../web_router'], function (React, Router, jquery, routes) {
     Router.run(routes, Router.HashLocation, function (Handler) {
-        React.render(<Handler />, jquery('#content')[0]);
+        React.render(React.createElement(Handler), jquery('#content')[0]);
     });
 });
