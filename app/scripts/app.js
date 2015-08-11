@@ -11,7 +11,7 @@ requirejs.config({
     }
 });
 
-requirejs(['react', 'ReactRouter', 'jquery', '../web_router'], function (React, Router, jquery, routes) {
+requirejs(['react', 'ReactRouter', 'jquery', 'root/web_router'], function (React, Router, jquery, routes) {
     Router.run(routes, Router.HashLocation, function (Handler) {
         React.render(React.createElement(Handler), jquery('#content')[0]);
     });

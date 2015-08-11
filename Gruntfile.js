@@ -8,7 +8,8 @@ module.exports = function (grunt) {
   var config = {
     app: 'app',
     dist: 'dist',
-    temp: '.tmp'
+    temp: '.tmp',
+    build: '.build'
   };
 
   grunt.initConfig({
@@ -188,10 +189,32 @@ module.exports = function (grunt) {
           dest: '<%= config.dist %>/scripts/require.js',
           src: 'bower_components/requirejs/require.js'
         }*/]
+      },
+      build: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= config.app %>/scripts',
+          dest: '<%= config.build %>/scripts',
+          src: ['{,*/}*.js']
+        }, {
+          dest: '<%= config.build %>/scripts/lib/jquery.js',
+          src: 'bower_components/jquery/dist/jquery.min.js'
+        }, {
+          dest: '<%= config.build %>/scripts/lib/react.js',
+          src: 'bower_components/react/react.min.js'
+        }, {
+          dest: '<%= config.build %>/scripts/lib/require.js',
+          src: 'bower_components/requirejs/require.js'
+        }, {
+          dest: '<%= config.build %>/scripts/lib/ReactRouter.js',
+          src: 'bower_components/react-router/build/umd/ReactRouter.min.js'
+        }]
       }
     },
     // 清理工程目录
     clean: {
+      server: '<%= config.temp %>',
       dist: {
         files: [{
           dot: true,
@@ -202,7 +225,16 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      server: '<%= config.temp %>'
+      build: {
+        files: [{
+          dot: true,
+          src: [
+            '<%= config.build %>',
+            '<%= config.dist %>/*',
+            '!<%= config.dist %>/.git*'
+          ]
+        }]
+      }
     },
     jshint: {
       options: {
@@ -287,13 +319,24 @@ module.exports = function (grunt) {
           dest: '<%= config.temp %>/scripts',
           ext: '.js'
         }]
+      },
+      build: {
+        files: [{
+          expand: true,
+          cwd: '<%= config.app %>/scripts',
+          src: ['{,*/}*.jsx'],
+          dest: '<%= config.build %>/scripts',
+          ext: '.js'
+        }]
       }
     },
     requirejs: {
       compile: {
         options: {
-          baseUrl: '<%= config.app %>/scripts/lib',
-          mainConfigFile: '<%= config.app %>/scripts/app.js',
+          name: 'root/app',
+          optimize: 'uglify',
+          baseUrl: '<%= config.build %>/scripts/lib',
+          mainConfigFile: '<%= config.build %>/scripts/app.js',
           out: '<%= config.dist %>/scripts/lib/require.js'
         }
       }
@@ -307,7 +350,8 @@ module.exports = function (grunt) {
       ],
       dist: [
         'sass:dist',
-        'copy'
+        'copy:styles',
+        'copy:dist'
       ]
     }
   });
@@ -339,7 +383,12 @@ module.exports = function (grunt) {
     'uglify'
   ]);
 
-  grunt.registerTask('requirejs', ['requirejs:complie']);
+  grunt.registerTask('reqbuild', [
+    'clean:build',
+    'copy:build',
+    'react:build',
+    'requirejs'
+  ]);
 };
 
 // sign 需要为 bower_components 文件夹加更新监听（虽然一般不能改里面的东西）

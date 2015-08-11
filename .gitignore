@@ -1,4 +1,5 @@
 .tmp
+.build
 .idea
 node_modules
 bower_components
