@@ -331,7 +331,7 @@ module.exports = function (grunt) {
       }
     },
     requirejs: {
-      compile: {
+      build: {
         options: {
           name: 'root/app',
           optimize: 'uglify',
@@ -339,6 +339,24 @@ module.exports = function (grunt) {
           mainConfigFile: '<%= config.build %>/scripts/app.js',
           out: '<%= config.dist %>/scripts/lib/require.js'
         }
+      }
+    },
+    htmlmin: {
+      build: {
+        options: {
+          removeComments: true,
+          removeCommentsFromCDATA: true,
+          collapseWhitespace: true,
+          collapseBooleanAttributes: true,
+          removeRedundantAttributes: true,
+          useShortDoctype: true
+        },
+        files: [{
+            expand: true,
+            cwd: '<%= config.app %>',
+            src: ['{,*/}*.html'],
+            dest: '<%= config.dist %>'
+          }]
       }
     },
     // 多线程任务
@@ -387,7 +405,8 @@ module.exports = function (grunt) {
     'clean:build',
     'copy:build',
     'react:build',
-    'requirejs'
+    'requirejs',
+    'htmlmin'
   ]);
 };
 
