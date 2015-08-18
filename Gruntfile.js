@@ -9,7 +9,8 @@ module.exports = function (grunt) {
     app: 'app',
     dist: 'dist',
     temp: '.tmp',
-    build: '.build'
+    build: '.build',
+    requiretest: 'RequireTest'
   };
 
   grunt.initConfig({
@@ -161,54 +162,21 @@ module.exports = function (grunt) {
         }, {
           expand: true,
           dot: true,
-          cwd: '<%= config.temp %>/fonts',
-          src: '{,*/}*',
-          dest: '<%= config.dist %>/fonts'
-        }, {
-          dest: '<%= config.dist %>/scripts/lib/jquery.js',
-          src: 'bower_components/jquery/dist/jquery.min.js'
-        }, {
-          dest: '<%= config.dist %>/scripts/lib/react.js',
-          src: 'bower_components/react/react.min.js'
-        }, {
-          dest: '<%= config.dist %>/scripts/lib/require.js',
-          src: 'bower_components/requirejs/require.js'
-        }, {
-          dest: '<%= config.dist %>/scripts/lib/ReactRouter.js',
-          src: 'bower_components/react-router/build/umd/ReactRouter.min.js'
-        }/*, {
-          cwd: '',
-          dest: '<%= config.dist %>/scripts/bootstrap.js',
-          src: 'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js'
-        }, {
-          cwd: '',
-          dest: '<%= config.dist %>/scripts/angular.js',
-          src: 'bower_components/angular/angular.min.js'
-        }, {
-          cwd: '',
-          dest: '<%= config.dist %>/scripts/require.js',
-          src: 'bower_components/requirejs/require.js'
-        }*/]
-      },
-      build: {
-        files: [{
-          expand: true,
-          dot: true,
           cwd: '<%= config.app %>/scripts',
           dest: '<%= config.build %>/scripts',
           src: ['{,*/}*.js']
         }, {
           dest: '<%= config.build %>/scripts/lib/jquery.js',
-          src: 'bower_components/jquery/dist/jquery.min.js'
+          src: 'bower_components/jquery/dist/jquery.js'
         }, {
           dest: '<%= config.build %>/scripts/lib/react.js',
-          src: 'bower_components/react/react.min.js'
+          src: 'bower_components/react/react.js'
         }, {
-          dest: '<%= config.build %>/scripts/lib/require.js',
+          dest: '<%= config.dist %>/scripts/lib/require.js',
           src: 'bower_components/requirejs/require.js'
         }, {
           dest: '<%= config.build %>/scripts/lib/ReactRouter.js',
-          src: 'bower_components/react-router/build/umd/ReactRouter.min.js'
+          src: 'bower_components/react-router/build/umd/ReactRouter.js'
         }]
       }
     },
@@ -220,15 +188,6 @@ module.exports = function (grunt) {
           dot: true,
           src: [
             '<%= config.temp %>',
-            '<%= config.dist %>/*',
-            '!<%= config.dist %>/.git*'
-          ]
-        }]
-      },
-      build: {
-        files: [{
-          dot: true,
-          src: [
             '<%= config.build %>',
             '<%= config.dist %>/*',
             '!<%= config.dist %>/.git*'
@@ -320,7 +279,7 @@ module.exports = function (grunt) {
           ext: '.js'
         }]
       },
-      build: {
+      dist: {
         files: [{
           expand: true,
           cwd: '<%= config.app %>/scripts',
@@ -331,13 +290,13 @@ module.exports = function (grunt) {
       }
     },
     requirejs: {
-      build: {
+      dist: {
         options: {
           name: 'root/app',
           optimize: 'uglify',
           baseUrl: '<%= config.build %>/scripts/lib',
           mainConfigFile: '<%= config.build %>/scripts/app.js',
-          out: '<%= config.dist %>/scripts/lib/require.js'
+          out: '<%= config.dist %>/scripts/app.js'
         }
       }
     },
@@ -398,14 +357,9 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'autoprefixer',
     'cssmin',
-    'uglify'
-  ]);
-
-  grunt.registerTask('reqbuild', [
-    'clean:build',
-    'copy:build',
-    'react:build',
-    'requirejs',
+    //'uglify'
+    'react:dist',
+    'requirejs:dist',
     'htmlmin'
   ]);
 };
